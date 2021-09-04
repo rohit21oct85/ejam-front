@@ -24,3 +24,6 @@
       color: white;
       border-radius: 0px !important;
 }
+.deletebtn{
+      cursor:pointer
+}

@@ -47,6 +47,22 @@ const App: React.FC = ()  => {
           })()
     }, []);
 
+    function deleteDeployment(deployment_id: any){
+      let answer = window.confirm("do you want to delete this deployment..?")
+      if(answer === true){
+        const requestOptions = {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ deployment_id: deployment_id })
+        };
+        fetch('http://localhost:3000/api/deployment/delete/deployments', requestOptions)
+          .then(response => response.json())
+          .then(data => {
+            setDeployments(data);  
+          });
+        }
+      }
+
   return (
     <div className="App col-md-12">
         <Header />
@@ -64,11 +80,12 @@ const App: React.FC = ()  => {
         {deployments?.length > 0 && Object.entries(deployments).map(([_key, _value]: any) => {
           return(
             <tbody>
-              <tr>
+              <tr id={_value?._id}>
                 <td>{_value.template}</td>
                 <td>{_value.versions}</td>
                 <td>{_value.url}</td>
-                <td><span className="fa fa-trash text-danger"></span></td>
+                <td><span className="fa fa-trash deletebtn text-danger"
+                onClick={e => deleteDeployment(_value._id)}></span></td>
               </tr>
             </tbody>
           );
