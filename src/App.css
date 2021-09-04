@@ -1,0 +1,26 @@
+.App{
+      width: 60%;
+      margin: 0 auto;
+}
+.App-header{
+      text-align: center;
+      background-color: antiquewhite;
+      padding: 0.5rem;
+}
+.form-div{
+      border-radius: 0px;
+      margin-top: 15px;
+}
+.btn-sm{
+      padding: 0.6rem;
+      cursor: pointer;
+      outline: none;
+      border: 0px;
+      
+      margin-left: 2px;
+}
+.btn-dark{
+      background-color: black;
+      color: white;
+      border-radius: 0px !important;
+}
